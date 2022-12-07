@@ -14,6 +14,16 @@ import AllListScreen from './components/AllListScreen';
 /*
     This is our application's top-level component.
     
+
+    
+        
+          
+    
+
+        
+    
+    @@ -27,10 +28,10 @@ const App = () => {
+  
     @author McKilla Gorilla
 */
 /*
@@ -35,9 +45,18 @@ const App = () => {
                     </Switch>
                     <MUIAlertModal />
                 </GlobalStoreContextProvider>
+
+    
+          
+            
+    
+
+          
+    
+    
+  
             </AuthContextProvider>
         </BrowserRouter>
     )
 }
-
 export default App
