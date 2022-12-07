@@ -6,19 +6,15 @@ import WorkspaceScreen from "./WorkspaceScreen";
 
 
     function ListCard(props) {
+    const { idNamePair, selected, songIndex, resetSongIndex } = props;
     const { store } = useContext(GlobalStoreContext);
     const [editActive, setEditActive] = useState(false);
     const [text, setText] = useState(idNamePair.name);
-    const [isExpand, setIsExpand] = useState(false);
-
-    function handleExpand() {
-        store.setCurrentList(idNamePair._id);
-        setIsExpand(true);
-    }
-
+	function ListCard(props) {
     function handleUnexpand() {
         setIsExpand(false);
         store.closeCurrentList();
+        resetSongIndex();
     }
 
     function handleDeleteList(event, id) {

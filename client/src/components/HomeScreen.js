@@ -181,57 +181,51 @@ const HomeScreen = () => {
 
     return (
         <React.Fragment>
-
-    
-        
-          
-    
-
-        
-    
-    @const HomeScreen = () => {
   
-            <><AppBanner /><Navbar /><div id='container'>
-                    <div id='container-left-side'>
-                        {listCard}
-                        <MUIDeleteModal />
-                    </div>
+            <AppBanner />
+            <Navbar />
+            <div id='container'>
+                <div id='container-left-side'>
+                    {listCard}
+                    <MUIDeleteModal />
+                </div>
 
-                    <div id='container-right-side'>
-                        <Box sx={{width: "100%"}}>
-                            <Box sx={{borderBottom: 1,borderColor: "divider"}}>
-                                <Tabs
-                                    value={value}
-                                    onChange={handleChange}
+                <div id='container-right-side'>
+                    <Box sx={{ width: "100%" }}>
+                        <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+                            <Tabs
+                                value={value}
+                                onChange={handleChange}
 
-                                >
-                                    <Tab label='Player' {...a11yProps(0)} sx={{background: "grey",borderRadius: "10px"}} />
-                                    <Tab label='Comments' {...a11yProps(1)} />
-                                </Tabs>
-                            </Box>
-                            <TabPanel value={value} index={0}>
-                                <YouTube videoId={song_id} opts={opts} onReady={onPlayerReady} onStateChange={onPlayerStateChange} />
-                                <div id="player-controller">
-                                    <IconButton size="large" onClick={handlePrevious}>
-                                        <PreviousIcon />
-                                    </IconButton>
-                                    <IconButton onClick={handlePause}>
-                                        <StopIcon />
-                                    </IconButton>
-                                    <IconButton onClick={handlePlay}>
-                                        <PlayIcon />
-                                    </IconButton>
-                                    <IconButton onClick={handleNext}>
-                                        <NextIcon />
-                                    </IconButton>
-                                </div>
-                            </TabPanel>
-                            <TabPanel value={value} index={1}>
-                                Comments
-                            </TabPanel>
+                            >
+                                <Tab label='Player' {...a11yProps(0)} sx={{background:"grey", borderRadius:"10px"} }/>
+                                <Tab label='Comments' {...a11yProps(1)} />
+                            </Tabs>
                         </Box>
-                    </div>
-                </div><AppFooter /></>
+                        <TabPanel value={value} index={0}>
+                            <YouTube videoId={song_id} opts={opts} onReady={onPlayerReady} onStateChange={onPlayerStateChange}/>
+                            <div id="player-controller">
+                                <IconButton size="large" onClick={handlePrevious}>
+                                    <PreviousIcon />
+                                </IconButton>
+                                <IconButton onClick={handlePause}>
+                                    <StopIcon />
+                                </IconButton>
+                                <IconButton onClick={handlePlay}>
+                                    <PlayIcon />
+                                </IconButton>
+                                <IconButton onClick={handleNext}>
+                                    <NextIcon />
+                                </IconButton>
+                            </div>
+                        </TabPanel>
+                        <TabPanel value={value} index={1}>
+                            Comments
+                        </TabPanel>
+                    </Box>
+                </div>
+            </div>
+            <AppFooter />
 
     
           
