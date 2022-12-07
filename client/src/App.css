@@ -18,6 +18,7 @@
 
 body {
   background-color: var(--swatch-foundation);
+  height: 90vh;
 }
 
 #root {
@@ -27,7 +28,7 @@ body {
   width: 80%;
   left: 10%;
   height: 90%;
-  top: 5%;
+  top: 10%;
 }
 
 #app-root {
@@ -54,18 +55,47 @@ body {
   border-radius: 10px;
 }
 #splash-screen {
-  background-image: linear-gradient(to bottom, #cedbcd, #9fa185);
-  color: rgb(152, 12, 12);
+  background-image: linear-gradient(to bottom, #b4b4b4, #48488f);
   font-size: 5vw;
   border-color: black;
   border-width: 2px;
   border-style: solid;
   border-radius: 10px;
+  padding-left: 7%;
   padding-top: 5%;
   padding-bottom: 5%;
-  height:85%;
-  /* text-align: center; */
+  height:70%;
+  text-align: center;
   vertical-align: center;
+}
+
+#splash-screen-logo {
+  font-size: 60%;
+  color: rgb(174, 31, 31);
+  text-align: left;
+}
+
+h1 {
+  color: rgb(43, 23, 23);
+  font-size: 70%;
+  padding-right: 7%;
+  margin-bottom: 6%;
+}
+
+p {
+  font-size: 40%;
+  padding-right: 7%;
+  margin-bottom: 5%;
+}
+
+.button {
+  position: relative;
+  top: 8%;
+  background-color: #6666b4;
+  border: 1px solid lightblue;
+  border-radius: 5px;
+  margin-right: 10%;
+  font-size: large;
 }
 
 #edit-toolbar {
@@ -93,31 +123,24 @@ body {
   cursor: not-allowed;
 }
 
-#top5-list-selector {
-  position: absolute;
-  left: 0%;
-  top: 10%;
-  width: 100%;
-  height: 80%;
-  background-color: var(--swatch-primary);
-}
-
-#top5-workspace {
-  position: absolute;
-  left: 0%;
-  top: 10%;
-  width: 100%;
-  height: 80%;
-  background-color: var(--swatch-accent);
-}
-
-#playlister-footer {
+#playlister-statusbar {
   position: absolute;
   left: 0%;
   top: 90%;
   width: 100%;
   height: 10%;
-  background-color: rgb(194, 191, 190);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36pt;
+}
+
+#playlister-footer {
+  position: absolute;
+  left: 0%;
+  top: 92%;
+  width: 100%;
+  height: 10%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -142,16 +165,68 @@ body {
   float: left;
 }
 
-#list-selector-list {
+#container {
   position: absolute;
-  left: 0%;
-  top: 10%;
+  top: 120px;
   width: 100%;
-  height: 90%;
-  background-color: rgb(194, 191, 190);
+  height: 75%;
   display: flex;
-  flex-direction: column;
+}
+
+#container-left-side {
+  width: 120%;
   overflow: scroll;
+  background-color: red;
+  border-radius: 20px;
+  position: relative;
+}
+
+#container-right-side {
+  width: 100%;
+  border-radius: 20px;
+  background-color: red;
+}
+
+#player-controller {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  width: 40%;
+  height: 50px;
+  left: 56%;
+  bottom: 5%;
+  border-radius: 20px;
+  background-color: white;
+}
+
+#unexpand-box1 {
+  width: 50%;
+}
+
+#unexpand-box2 {
+  width: 50%;
+  position: relative;
+}
+
+#expand-box1 {
+  height: 15%;
+  width: 100%;
+}
+
+#expand-box2 {
+  height: auto;
+
+}
+
+#expand-box3 {
+  height: 15%;
+  position: absolute;
+}
+
+#list-card-title {
+  font-size: 1.3rem;
+  margin-top: 5px;
+  margin-left: 10px;
 }
 
 .list-card,
@@ -171,6 +246,14 @@ body {
   pointer-events: none;
 }
 
+.unselected-playlist {
+  background-color: lightyellow;
+}
+
+.selected-playlist {
+  background-color: #48488f;
+}
+
 .unselected-list-card:hover {
   cursor: pointer;
   background-color: var(--swatch-contrast);
@@ -188,7 +271,7 @@ body {
 
 .list-card-button {
   float: right;
-  transform: scale(2);
+  transform: scale(1);
 }
 
 #workspace-home,
