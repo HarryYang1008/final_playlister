@@ -78,6 +78,7 @@ loginUser = async (req, res) => {
       .json({
         success: true,
         user: {
+          userName: existingUser.userName,
           firstName: existingUser.firstName,
           lastName: existingUser.lastName,
           email: existingUser.email,
@@ -104,8 +105,8 @@ registerUser = async (req, res) => {
   try {
     const { userName, firstName, lastName, email, password, passwordVerify } = req.body;
     // console.log("create user: " + firstName + " " + lastName + " " + email + " " + password + " " + passwordVerify);
-    if(!userName || !firstName || !lastName || !email || !password || !passwordVerify) {
-        return res
+    if (!userName || !firstName || !lastName || !email || !password || !passwordVerify) {
+      return res
         .status(400)
         .json({
           success: false,
@@ -142,7 +143,7 @@ registerUser = async (req, res) => {
     // console.log("passwordHash: " + passwordHash);
 
     const newUser = new User({
-      username,
+      userName,
       firstName,
       lastName,
       email,
