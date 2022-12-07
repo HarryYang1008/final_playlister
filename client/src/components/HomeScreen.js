@@ -18,6 +18,16 @@ import { IconButton } from "@mui/material";
 
 /*
     This React component lists all the top5 lists in the UI.
+
+    
+        
+          
+    
+
+        
+    
+    @@ -19,6 +24,17 @@ import Navbar from "./Navbar";
+  
     
     @author McKilla Gorilla
 */
@@ -38,10 +48,17 @@ const HomeScreen = () => {
     useEffect(() => {
         store.loadIdNamePairs();
         // eslint-disable-next-line react-hooks/exhaustive-deps
+
+    
+        
+          
+    
+
+        
+    
+    @@ -31,29 +47,118 @@ const HomeScreen = () => {
+  
     }, []);
-
-    // console.log(store.idNamePairs);
-
     let listCard = "";
     if (store) {
         listCard = (
@@ -92,7 +109,7 @@ const HomeScreen = () => {
     }
 
     const opts = {
-        height: "300px",
+        height: "390px",
         width: "100%",
         playerVars: {
             // https://developers.google.com/youtube/player_parameters
@@ -104,12 +121,15 @@ const HomeScreen = () => {
     let songIds = [];
     let player;
 
-    if (store.listBeingPlay) {
-        let songs = store.listBeingPlay.songs;
+    if (store.currentList) {
+        let songs = store.currentList.songs;
         for (let song of songs)
             songIds.push(song.youTubeId);
         song_id = songIds[songIndex];
     }
+
+    console.log(song_id);
+    console.log(songIndex);
 
     function loadAndPlayCurrentSong(player) {
         let song = songIds[songIndex];
@@ -161,56 +181,68 @@ const HomeScreen = () => {
 
     return (
         <React.Fragment>
-            <AppBanner />
-            <Navbar />
-            <div id='container'>
-                <div id='container-left-side'>
-                    {listCard}
-                    <MUIDeleteModal />
-                </div>
 
-                <div id='container-right-side'>
-                    <div style={{ width: "100%", display: 'flex', flexDirection: 'column' }}>
-                        <div style={{ borderBottom: 1, borderColor: "divider" }}>
-                            <Tabs
-                                value={value}
-                                onChange={handleChange}
-                                sx={{height: "50px"}}
-                            >
-                                <Tab label='Player' {...a11yProps(0)} sx={{background:"grey", borderRadius:"10px"}}/>
-                                <Tab label='Comments' {...a11yProps(1)} sx={{background:"grey", borderRadius:"10px"}}/>
-                            </Tabs>
-                        </div>
-                        <TabPanel value={value} index={0}>
-                            <YouTube videoId={song_id} opts={opts} onReady={onPlayerReady} onStateChange={onPlayerStateChange}/>
-                            <div>Playlist: {store.listBeingPlay ? store.listBeingPlay.name : ""} </div>
-                            <div>song #: {(store.listBeingPlay && store.listBeingPlay.songs.length > 0) ? (songIndex+1) : ""}</div>
-                            <div>title: {(store.listBeingPlay && store.listBeingPlay.songs.length > 0) ? store.listBeingPlay.songs[songIndex].title : ""} </div>
-                            <div>artist: {(store.listBeingPlay && store.listBeingPlay.songs.length > 0) ? store.listBeingPlay.songs[songIndex].artist : ""}</div>
-                            <div id="player-controller">
-                                <IconButton size="large" onClick={handlePrevious}>
-                                    <PreviousIcon />
-                                </IconButton>
-                                <IconButton onClick={handlePause}>
-                                    <StopIcon />
-                                </IconButton>
-                                <IconButton onClick={handlePlay}>
-                                    <PlayIcon />
-                                </IconButton>
-                                <IconButton onClick={handleNext}>
-                                    <NextIcon />
-                                </IconButton>
-                            </div>
-                        </TabPanel>
-                        <TabPanel value={value} index={1}>
-                            Comments
-                        </TabPanel>
+    
+        
+          
+    
+
+        
+    
+    @const HomeScreen = () => {
+  
+            <><AppBanner /><Navbar /><div id='container'>
+                    <div id='container-left-side'>
+                        {listCard}
+                        <MUIDeleteModal />
                     </div>
-                </div>
-            </div>
-            <AppFooter />
+
+                    <div id='container-right-side'>
+                        <Box sx={{width: "100%"}}>
+                            <Box sx={{borderBottom: 1,borderColor: "divider"}}>
+                                <Tabs
+                                    value={value}
+                                    onChange={handleChange}
+
+                                >
+                                    <Tab label='Player' {...a11yProps(0)} sx={{background: "grey",borderRadius: "10px"}} />
+                                    <Tab label='Comments' {...a11yProps(1)} />
+                                </Tabs>
+                            </Box>
+                            <TabPanel value={value} index={0}>
+                                <YouTube videoId={song_id} opts={opts} onReady={onPlayerReady} onStateChange={onPlayerStateChange} />
+                                <div id="player-controller">
+                                    <IconButton size="large" onClick={handlePrevious}>
+                                        <PreviousIcon />
+                                    </IconButton>
+                                    <IconButton onClick={handlePause}>
+                                        <StopIcon />
+                                    </IconButton>
+                                    <IconButton onClick={handlePlay}>
+                                        <PlayIcon />
+                                    </IconButton>
+                                    <IconButton onClick={handleNext}>
+                                        <NextIcon />
+                                    </IconButton>
+                                </div>
+                            </TabPanel>
+                            <TabPanel value={value} index={1}>
+                                Comments
+                            </TabPanel>
+                        </Box>
+                    </div>
+                </div><AppFooter /></>
+
+    
+          
+            
+    
+
+          
+    
+    
+  
         </React.Fragment>
     );
 };
-
 export default HomeScreen;
