@@ -102,10 +102,10 @@ logoutUser = async (req, res) => {
 
 registerUser = async (req, res) => {
   try {
-    const { firstName, lastName, email, password, passwordVerify } = req.body;
+    const { userName, firstName, lastName, email, password, passwordVerify } = req.body;
     // console.log("create user: " + firstName + " " + lastName + " " + email + " " + password + " " + passwordVerify);
-    if (!firstName || !lastName || !email || !password || !passwordVerify) {
-      return res
+    if(!userName || !firstName || !lastName || !email || !password || !passwordVerify) {
+        return res
         .status(400)
         .json({
           success: false,
@@ -142,6 +142,7 @@ registerUser = async (req, res) => {
     // console.log("passwordHash: " + passwordHash);
 
     const newUser = new User({
+      username,
       firstName,
       lastName,
       email,
