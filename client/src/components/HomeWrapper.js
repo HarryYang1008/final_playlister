@@ -1,5 +1,8 @@
 import { useContext } from "react";
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import HomeScreen from "./HomeScreen";
+import AllListScreen from "./AllListScreen";
+import UserScreen from "./UserScreen";
 import SplashScreen from "./SplashScreen";
 import AuthContext from "../auth";
 import { Statusbar } from ".";
@@ -11,7 +14,13 @@ export default function HomeWrapper() {
   if (auth.loggedIn)
     return (
       <div>
-        <HomeScreen />
+          <BrowserRouter>
+            <Switch>
+              <Route path="/allList/" component={AllListScreen} />
+              <Route path="/user" component={UserScreen} />
+              <Route path="/" component={HomeScreen} />
+            </Switch>
+          </BrowserRouter>
       </div>
     );
   else return <SplashScreen />;
