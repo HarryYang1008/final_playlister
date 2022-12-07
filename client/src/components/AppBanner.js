@@ -95,15 +95,16 @@ export default function AppBanner() {
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
                 <Toolbar>
-                    <Typography                        
+                    {/* <Typography                        
                         variant="h4"
                         noWrap
                         component="div"
                         sx={{ display: { xs: 'none', sm: 'block' } }}                        
                     >
-                        playlister
-                    </Typography>
-                    <Box sx={{ flexGrow: 1 }}>{menu}</Box>
+                        <Link style={{ textDecoration: 'none', color: 'white' }} to='/'>⌂</Link>
+                    </Typography> */}
+                    <Typography style={{fontSize:'1.5rem', color:'red'}}>PlayLister</Typography>
+                    <Box sx={{ flexGrow: 1 }}></Box>
                     <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                         <IconButton
                             size="large"
@@ -117,9 +118,11 @@ export default function AppBanner() {
                             { getAccountMenu(auth.loggedIn) }
                         </IconButton>
                     </Box>
-                    
                 </Toolbar>
             </AppBar>
+            {
+                menu
+            }
         </Box>
     );
 }
